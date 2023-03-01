@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         python-version:
+          - "3.7"
           - "3.8"
           - "3.9"
           - "3.10"
@@ -33,6 +34,7 @@ jobs:
           pip3 install -r requirements-test.txt
           
       - name: Run flake
+        if: matrix.python-version != '3.7'
         run: flake8
 
       - name: Run tests

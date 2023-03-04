@@ -12,13 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3.3.0
 
-      - uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: "1.2.2"
+      - name: Install poetry
+        run: |
+          pip install poetry poetry-dynamic-versioning
 
       - name: Publish
         run: |
-          poetry self add "poetry-dynamic-versioning[plugin]"
+          #poetry self add "poetry-dynamic-versioning[plugin]"
 
           poetry config repositories.testpypi https://test.pypi.org/legacy/
           poetry build

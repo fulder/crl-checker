@@ -1,6 +1,7 @@
 name: test-publish
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -18,4 +19,5 @@ jobs:
       - name: Publish
         run: |
           poetry config repositories.testpypi https://test.pypi.org/legacy/
-          poetry publish --build --username __token__ --password ${{ secrets.PYPI_TEST_TOKEN }} --repository testpypi
+          poetry build
+          #poetry publish --build --username __token__ --password ${{ secrets.PYPI_TEST_TOKEN }} --repository testpypi

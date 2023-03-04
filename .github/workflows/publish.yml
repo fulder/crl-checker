@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - "*"
+    branches:
+      - use-poetry
 
 jobs:
   build-and-publish:

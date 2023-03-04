@@ -33,8 +33,10 @@ jobs:
           pip install poetry
           poetry install --with dev
           
-      - name: Run flake
+      - name: Lint code
         run: |
+          poetry run isort --check .
+          poetry run black --check .
           poetry run flake8 .
 
       - name: Run tests

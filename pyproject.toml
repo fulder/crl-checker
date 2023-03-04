@@ -1,7 +1,26 @@
+[tool.poetry]
+name = "crl-checker"
+version = "0.0.0"
+description = "Check if certificate is revoked using the x509 CRL extension"
+authors = ["Michal Sadowski <misad90@gmail.com>"]
+license = "OSI Approved :: MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+cryptography = "^39.0.1"
+requests = "^2.28.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.1"
+pytest-mock = "^3.10.0"
+pytest-cov = "^4.0.0"
+flake8 = "^6.0.0"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel",
-    "setuptools_scm"
-]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+

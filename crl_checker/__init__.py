@@ -1,3 +1,5 @@
+from warnings import warn
+
 import requests
 from cryptography import x509
 from cryptography.x509.extensions import ExtensionNotFound
@@ -29,6 +31,13 @@ class Revoked(Error):
 
 
 def check_revoked(cert_pem: str):
+    warn(
+        "'check_revoked' function is deprecated, "
+        "please migrate to 'pki_tools.is_revoked' instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
+
     try:
         cert = x509.load_pem_x509_certificate(cert_pem.encode())
     except ValueError as e:
@@ -38,6 +47,13 @@ def check_revoked(cert_pem: str):
 
 
 def check_revoked_crypto_cert(cert: x509.Certificate):
+    warn(
+        "'check_revoked_crypto_cert' function is deprecated, "
+        "please migrate to 'pki_tools.is_revoked' instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
+
     ext = cert.extensions
     try:
         crl_ex = ext.get_extension_for_oid(

@@ -1,6 +1,5 @@
 from warnings import warn
 
-from cryptography import x509
 from pki_tools import Certificate, Chain, crl
 
 
@@ -27,9 +26,7 @@ def check_revoked(cert_pem: str, crl_issuer_pem: str):
         raise Revoked()
 
 
-def check_revoked_crypto_cert(
-    crypto_cert: x509.Certificate, crypto_crl_issuer: x509.Certificate
-):
+def check_revoked_crypto_cert(crypto_cert, crypto_crl_issuer):
     warn(
         "'check_revoked_crypto_cert' function is deprecated, "
         "please migrate to 'pki_tools.is_revoked' instead.",

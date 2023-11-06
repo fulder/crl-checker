@@ -1,4 +1,6 @@
-![Python Badge](https://img.shields.io/badge/python-3.7%2B-blue.svg?style=for-the-badge&logo=python)
+## :warning: Library deprecated, please migrate to [pki-tools](https://github.com/fulder/pki-tools) :warning: 
+
+![Python Badge](https://img.shields.io/badge/python-3.8%2B-blue.svg?style=for-the-badge&logo=python)
 
 # crl-checker
 
@@ -21,9 +23,14 @@ cert_pem = """
 <CERTIFICATE_PEM_BYTES>
 -----END CERTIFICATE-----
 """
+crl_issuer_pem = """
+-----BEGIN CERTIFICATE-----
+<CERTIFICATE_PEM_BYTES>
+-----END CERTIFICATE-----
+"""
 
 try:
-    check_revoked(cert_pem)
+    check_revoked(cert_pem, crl_issuer_pem)
 except Revoked as e:
     print(f"Certificate revoked: {e}")
 except Error as e:
@@ -38,9 +45,10 @@ from cryptography import x509
 from crl_checker import check_revoked_crypto_cert, Revoked, Error
 
 cert : x509.Certificate = ...
+chain: x509.Certificate = ...
 
 try:
-    check_revoked_crypto_cert(cert)
+    check_revoked_crypto_cert(cert, chain)
 except Revoked as e:
     print(f"Certificate revoked: {e}")
 except Error as e:

@@ -1,6 +1,7 @@
 from warnings import warn
 
-from pki_tools import Certificate, Chain, crl
+import pki_tools
+from pki_tools import Certificate, Chain, RevokeMode
 
 
 class Error(Exception):
@@ -22,7 +23,7 @@ def check_revoked(cert_pem: str, crl_issuer_pem: str):
     cert = Certificate.from_pem_string(cert_pem)
     chain = Chain.from_pem_string(crl_issuer_pem)
 
-    if not crl._is_revoked(cert, chain):
+    if not pki_tools.is_revoked(cert, chain, revoke_mode=RevokeMode.CRL_ONLY):
         raise Revoked()
 
 
@@ -37,5 +38,5 @@ def check_revoked_crypto_cert(crypto_cert, crypto_crl_issuer):
     cert = Certificate.from_cryptography(crypto_cert)
     chain = Chain.from_cryptography([crypto_crl_issuer])
 
-    if not crl._is_revoked(cert, chain):
+    if not pki_tools.is_revoked(cert, chain, revoke_mode=RevokeMode.CRL_ONLY):
         raise Revoked()

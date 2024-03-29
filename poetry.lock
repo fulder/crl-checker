@@ -411,13 +411,13 @@ files = [
 
 [[package]]
 name = "pki-tools"
-version = "0.0.31"
+version = "0.0.32"
 description = "PKI tools for e.g. checking certificate CRL/OCSP revocation"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "pki_tools-0.0.31-py3-none-any.whl", hash = "sha256:e06e41e844798bc99d7e241b60dc60fa15053f0f91bd423866429717fbf3471c"},
-    {file = "pki_tools-0.0.31.tar.gz", hash = "sha256:78cda44a6e48037147eeabc805fe2019a6839216a747ebf1e85852e30d58c2d4"},
+    {file = "pki_tools-0.0.32-py3-none-any.whl", hash = "sha256:a122321f17aa59848e23ad73c2a4ffaef7f835dbe6406adaf536d7e33c49c8fb"},
+    {file = "pki_tools-0.0.32.tar.gz", hash = "sha256:7eb26383a089245d813ab7a2cfe5d37ef9e2cc0f28c656e2063738689ae9a967"},
 ]
 
 [package.dependencies]
@@ -425,6 +425,7 @@ cryptography = ">=39.0.1,<43.0.0"
 httpx = ">=0.27.0,<0.28.0"
 loguru = ">=0.7.2,<0.8.0"
 pydantic = ">=2.6.3,<3.0.0"
+pytz = ">=2024.1,<2025.0"
 pyyaml = ">=6.0.1,<7.0.0"
 
 [[package]]
@@ -586,6 +587,17 @@ files = [
 ]
 
 [[package]]
+name = "pytz"
+version = "2024.1"
+description = "World timezone definitions, modern and historical"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pytz-2024.1-py2.py3-none-any.whl", hash = "sha256:328171f4e3623139da4983451950b28e95ac706e13f3f2630a879749e7a8b319"},
+    {file = "pytz-2024.1.tar.gz", hash = "sha256:2a29735ea9c18baf14b448846bde5a48030ed267578472d8955cd0e7443a9812"},
+]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.1"
 description = "YAML parser and emitter for Python"
@@ -695,4 +707,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "fcb28d45824d794d7016025bc6095cb46cdddf7a8e3d175ffa1456a68213d5fc"
+content-hash = "5d0079f821e8c085080d80af9890596f8a448a73cfc7d94640b674521a916414"
